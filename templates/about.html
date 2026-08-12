@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ t('nav_about') }} · Tbiliso Oldenburg{% endblock %}
+{% block content %}
+<section class="page-head">
+  <h1>{{ t('about_h_1') }}</h1>
+  <p>{{ 'Tbiliso — das erste georgische Restaurant in Oldenburg.' if lang=='de'
+        else 'Tbiliso — первый грузинский ресторан в Ольденбурге.' }}</p>
+</section>
+<section class="section">
+  <div class="row split">
+    <div class="col">
+      <h2>{{ 'Eine Liebeserklärung an Georgien' if lang=='de' else 'Признание в любви Грузии' }}</h2>
+      <p>
+        {% if lang == 'de' %}
+          Eröffnet von <strong>{{ r.owner }}</strong>, bringt Tbiliso die Seele der georgischen
+          Küche nach Oldenburg. Jedes Gericht wird nach Originalrezept zubereitet. Unser Brot kommt
+          frisch aus dem Steinofen, Chinkali werden von Hand gedreht, und unsere Weine stammen aus
+          kleinen, familiengeführten Kellereien in Kachetien.
+        {% else %}
+          Открытый <strong>{{ r.owner }}</strong>, Tbiliso приносит душу грузинской кухни в Ольденбург.
+          Все блюда готовятся по оригинальным рецептам. Хлеб — прямо из каменной печи, хинкали лепятся
+          вручную, а вина поставляются из небольших семейных виноделен в Кахетии.
+        {% endif %}
+      </p>
+      <h3>{{ 'Was uns besonders macht' if lang=='de' else 'Что нас отличает' }}</h3>
+      <ul class="check-list">
+        <li>{{ t('about_p_li_1') }}</li>
+        <li>{{ t('about_p_li_2') }}</li>
+        <li>{{ t('about_p_li_3') }}</li>
+        <li>{{ t('about_p_li_4') }}</li>
+        <li>{{ t('about_p_li_5') }}</li>
+      </ul>
+    </div>
+    <div class="col">
+      <img class="rounded" src="https://sspark.genspark.ai/cfimages?u1=2d6Uisl8uMa9xzs6BP9CeTfy%2B13%2FWrLj9oF%2B167K%2FelPVabuWm4J2UBu6foNs3Il84Ea99UE9XiA3fcSpbty6oL5sEY81qpwaSoePAEn&u2=RpUsfme9eofy696K&width=900"
+           alt="Tbilissi Altstadt" loading="lazy">
+    </div>
+  </div>
+</section>
+{% endblock %}

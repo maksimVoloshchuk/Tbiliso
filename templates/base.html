@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="{{ 'ru' if lang == 'ru' else 'de' }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Tbiliso – Erstes georgisches Restaurant in Oldenburg{% endblock %}</title>
+<meta name="description" content="Tbiliso Oldenburg – authentische georgische Küche: Chatschapuri, Chinkali, Satsivi, georgischer Wein und Qvevri-Spezialitäten. Reservierung & Wolt-Lieferung.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236E1023'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='Georgia,serif' font-size='38' font-weight='900' fill='%23C8A35A'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{ url_for('index') }}" class="logo">
+      <span class="logo-mark">T</span>
+      <div>
+        <div class="logo-name">Tbiliso</div>
+        <div class="logo-sub">georgisches Restaurant · Oldenburg</div>
+      </div>
+    </a>
+    <nav class="main-nav">
+      <a href="{{ url_for('index') }}">{{ t('nav_home') }}</a>
+      <a href="{{ url_for('about') }}">{{ t('nav_about') }}</a>
+      <a href="{{ url_for('menu') }}">{{ t('nav_menu') }}</a>
+      <a href="{{ url_for('reservation_page') }}">{{ t('nav_res') }}</a>
+      <a href="{{ url_for('contact') }}">{{ t('nav_contact') }}</a>
+    </nav>
+    <div class="lang-switch" aria-label="Sprache">
+      <a href="{{ url_for('set_lang', code='de') }}" class="lang-btn {% if lang=='de' %}active{% endif %}">DE</a>
+      <a href="{{ url_for('set_lang', code='ru') }}" class="lang-btn {% if lang=='ru' %}active{% endif %}">RU</a>
+    </div>
+    <a href="{{ url_for('reservation_page') }}" class="btn btn-gold header-cta">{{ t('cta_reserve') }}</a>
+  </div>
+</header>
+
+{% block hero %}{% endblock %}
+
+<main class="container">
+  {% block content %}{% endblock %}
+</main>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="container flash-bar">
+      {% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <div class="logo">
+        <span class="logo-mark">T</span>
+        <div>
+          <div class="logo-name">Tbiliso</div>
+          <div class="logo-sub">{{ t('tagline') }}</div>
+        </div>
+      </div>
+      <p>{{ 'Wir heißen Sie von Herzen willkommen.' if lang=='de' else 'Мы рады приветствовать вас от всего сердца.' }}</p>
+    </div>
+    <div>
+      <h4>{{ t('address_h') }}</h4>
+      <p>{{ r.address }}</p>
+      <p><a href="tel:{{ r.phone }}">📞 {{ r.phone_display }}</a></p>
+      <p><a href="mailto:{{ r.email }}">✉ {{ r.email }}</a></p>
+    </div>
+    <div>
+      <h4>{{ t('hours_h') }}</h4>
+      <ul class="hours">
+        {% for day, time in r.hours %}
+          <li><span>{{ day }}</span><span>{{ time }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h4>{{ t('delivery_h') }}</h4>
+      <p>
+        <a class="btn btn-wolt" href="{{ r.wolt_url }}" target="_blank" rel="noopener">
+          🍽 Wolt
+        </a>
+      </p>
+      <p class="hint">⚠ {{ 'Wolt-City-Link Oldenburg. Die Restaurant-URL wird vom Betreiber gepflegt.' if lang=='de'
+                    else 'Ссылка на городскую страницу Wolt Ольденбург. Прямая ссылка ресторана обновляется владельцем.' }}</p>
+      <p>Instagram: <a href="https://www.instagram.com/" target="_blank" rel="noopener">@tbiliso.oldenburg</a></p>
+    </div>
+  </div>
+  <div class="footer-base">
+    © 2026 Tbiliso · {{ 'Inhaber' if lang=='de' else 'Владелец' }}: {{ r.owner }} ·
+    <a href="{{ url_for('impressum') }}">{{ t('impressum_h') }}</a>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

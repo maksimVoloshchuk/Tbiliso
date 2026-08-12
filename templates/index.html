@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block hero %}
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="container hero-content">
+    <p class="kicker">{{ t('kicker') }}</p>
+    <h1>{{ t('hero_title_1') }}<br><span class="gold">{{ t('hero_title_2') }}</span><br>{{ t('hero_title_3') }}</h1>
+    <p class="hero-lead">{{ t('hero_lead') }}</p>
+    <div class="hero-actions">
+      <a href="{{ url_for('reservation_page') }}" class="btn btn-gold">{{ t('cta_reserve') }}</a>
+      <a href="{{ r.wolt_url }}" target="_blank" rel="noopener" class="btn btn-wolt-outline">{{ t('cta_wolt') }}</a>
+    </div>
+    <div class="hero-meta">
+      <div><span class="num">★ {{ r.rating }}</span><span>{{ t('meta_rating') }}</span></div>
+      <div><span class="num">1.</span><span>{{ t('meta_first_georgian') }}</span></div>
+      <div><span class="num">8000+</span><span>{{ t('meta_wine_tradition') }}</span></div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-head">
+    <h2>{{ t('section_dishes_h') }}</h2>
+    <p>{{ t('section_dishes_p') }}</p>
+  </div>
+  <div class="dish-grid">
+    <article class="dish-card">
+      <img src="https://sspark.genspark.ai/cfimages?u1=FALgbFPY5P4V1rPyMxEN5lhO0QGMK%2F3L9biGUhnjro6qSpMR4xhBESPkdIsNmDjCZnm6KWEKpRU0284027X%2B8Ti5kxxR6UuzGSqEl4sfytkDobiO31O%2B%2FXRzlW7cp4vKR10JFjNYA4pP7thXLoh5a0wbQG1OFLZzgDMSBHao%3D&u2=80VZNRUAYS9hBVaZ&width=800"
+           alt="Chatschapuri Adscharuli" loading="lazy">
+      <div class="dish-body">
+        <h3>{{ t('dish_1_h') }}</h3>
+        <p>{{ t('dish_1_p') }}</p>
+        <span class="price">€ 12,90</span>
+      </div>
+    </article>
+    <article class="dish-card">
+      <img src="https://sspark.genspark.ai/cfimages?u1=1Gsp0RLgzxUL0UgR%2B5cu7yxFJazIl4QeGgfQGiF5HP%2Bi4%2BMD8ess8cQhRR5NU%2BtcrHWkIgJ5xa%2B1R%2FnfOd5pbRaVh856NxvhZ3ZuDT0Zioozru7LrANtCoDORu3qonV1mlXonsUv%2BzE%3D&u2=%2BhLFhJ4YoxXDTj0y&width=800"
+           alt="Chinkali" loading="lazy">
+      <div class="dish-body">
+        <h3>{{ t('dish_2_h') }}</h3>
+        <p>{{ t('dish_2_p') }}</p>
+        <span class="price">{% if lang=='de' %}ab € 9,50{% else %}от € 9,50{% endif %}</span>
+      </div>
+    </article>
+    <article class="dish-card">
+      <img src="https://sspark.genspark.ai/cfimages?u1=nGmEtPnVhjISZSFKq3KALjTXWDNgVdR%2BTi79fIXRgFEBePmTPVek9YWMYiNBsver485jVfgKwliYfaVIsBMXKznPJaZL&u2=5lyNrnPSmaJwj5uf&width=800"
+           alt="Qvevri Wein" loading="lazy">
+      <div class="dish-body">
+        <h3>{{ t('dish_3_h') }}</h3>
+        <p>{{ t('dish_3_p') }}</p>
+        <span class="price">{% if lang=='de' %}ab € 6,90 / Glas{% else %}от € 6,90 / бокал{% endif %}</span>
+      </div>
+    </article>
+    <article class="dish-card">
+      <img src="https://sspark.genspark.ai/cfimages?u1=ZED7P8airqHtWMbZEjCZmhFNv29BZdMJiN9tZrfCFf489r3fjRCkU380dMpXd6YpHLGIPdQ4R8%2BhyHW0xxIggOHfFxMryYkqWKBHkgZUV3F9UN0ekiXrtTK4VTiiZW%2F5qE1g%2FRbi3HfPE%2F%2FV%2B%2BN9afM5Lsc8%2BgX7AHs%3D&u2=mUnVnTI%2F5Oxs%2B9hV&width=800"
+           alt="Georgische Weinlandschaft Kachetien" loading="lazy">
+      <div class="dish-body">
+        <h3>{{ t('dish_4_h') }}</h3>
+        <p>{{ t('dish_4_p') }}</p>
+        <span class="price">€ 14,50</span>
+      </div>
+    </article>
+  </div>
+  <div class="center"><a href="{{ url_for('menu') }}" class="btn btn-outline">{{ t('see_full_menu') }}</a></div>
+</section>
+
+<section class="section alt">
+  <div class="row split">
+    <div class="col">
+      <h2>{{ t('supra_h') }}</h2>
+      <p>{{ t('supra_p_1') }} {{ t('supra_p_2') }}</p>
+      <ul class="check-list">
+        <li>{{ t('feature_1') }}</li>
+        <li>{{ t('feature_2') }}</li>
+        <li>{{ t('feature_3') }}</li>
+        <li>{{ t('feature_4') }}</li>
+      </ul>
+      <a href="{{ url_for('reservation_page') }}" class="btn btn-gold">{{ t('reserve_now') }}</a>
+    </div>
+    <div class="col">
+      <img class="rounded" src="https://sspark.genspark.ai/cfimages?u1=HGAbY%2BIMuMB%2FIbmtkIGatgiY5246aqV6eOlMlAeJA76cHuReUHC59n1pL8k3BjBMu7BAJkBRByjGelHXAdzemL%2FtayaWoDuWeNTc%2Bg0vagzkh88jEbbohNtuKqJmdo0feza52QVVtOR1rs3GIz4HxPg17t4%3D&u2=w12vjuq9iEa35nhF&width=900"
+           alt="Qvevri-Weinkeller in Georgien" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <h2>{{ t('cta_h') }}</h2>
+  <p>{{ t('cta_p') }} {{ r.phone_display }}.</p>
+  <a href="{{ url_for('reservation_page') }}" class="btn btn-gold big">{{ t('cta_reserve') }}</a>
+</section>
+{% endblock %}

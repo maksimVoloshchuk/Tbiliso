@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}{{ t('nav_res') }} · Tbiliso Oldenburg{% endblock %}
+{% block content %}
+<section class="page-head">
+  <h1>{{ t('nav_res') }}</h1>
+  <p>{{ 'Sichern Sie sich Ihren Platz im ersten georgischen Restaurant Oldenburgs.' if lang=='de'
+        else 'Забронируйте столик в первом грузинском ресторане Ольденбурга.' }}</p>
+</section>
+
+<section class="reservation">
+  <form id="reservation-form" class="res-form" novalidate>
+    <div class="grid-2">
+      <label>{{ t('form_name') }}<input name="name" required minlength="2"></label>
+      <label>{{ t('form_phone') }}<input name="phone" required pattern="[\d\s\-\+\(\)/]{6,}"></label>
+      <label>{{ t('form_email') }}<input type="email" name="email" required></label>
+      <label>{{ t('form_occasion') }}
+        <select name="occasion">
+          <option value="">—</option>
+          {% if lang == 'ru' %}
+            <option>День рождения</option>
+            <option>Годовщина</option>
+            <option>Деловой ужин</option>
+            <option>Семейный праздник</option>
+            <option>Просто так</option>
+          {% else %}
+            <option>Geburtstag</option>
+            <option>Jahrestag</option>
+            <option>Geschäftsessen</option>
+            <option>Familienfeier</option>
+            <option>Einfach so</option>
+          {% endif %}
+        </select>
+      </label>
+      <label>{{ t('form_date') }}<input type="date" name="date" required min=""></label>
+      <label>{{ t('form_time') }}<input type="time" name="time" required></label>
+      <label>{{ t('form_guests') }}<input type="number" name="guests" required min="1" max="20" value="2"></label>
+      <label class="full">{{ t('form_notes') }}<textarea name="notes" rows="3"
+        placeholder="{% if lang=='de' %}Allergien, Kinderstuhl, Barrierefreiheit …{% else %}Аллергии, детский стул, доступность …{% endif %}"></textarea></label>
+    </div>
+    <button type="submit" class="btn btn-gold">{{ t('form_submit') }}</button>
+    <p id="res-msg" class="msg"></p>
+  </form>
+
+  <aside class="res-side">
+    <h3>{{ t('hours_h') }}</h3>
+    <ul class="hours">
+      {% for d, t_ in r.hours %}<li><span>{{ d }}</span><span>{{ t_ }}</span></li>{% endfor %}
+    </ul>
+    <p>📞 <a href="tel:{{ r.phone }}">{{ r.phone_display }}</a><br>
+       ✉ <a href="mailto:{{ r.email }}">{{ r.email }}</a></p>
+    <p class="hint">{{ 'Bei kurzfristigen Reservierungen rufen Sie uns bitte direkt an.' if lang=='de'
+                    else 'Для срочного бронирования, пожалуйста, позвоните нам напрямую.' }}</p>
+  </aside>
+</section>
+{% endblock %}

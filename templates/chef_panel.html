@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}{% if lang=='ru' %}Панель шефа{% else %}Chef-Bereich{% endif %} · Tbiliso{% endblock %}
+{% block content %}
+<section class="page-head">
+  <h1>{% if lang=='ru' %}🧑‍🍳 Панель шефа{% else %}🧑‍🍳 Chef-Bereich{% endif %}</h1>
+  <p>
+    {% if lang=='ru' %}
+      Здесь видны все онлайн-бронирования и сообщения.
+      <a href="{{ url_for('chef_logout') }}">Выйти</a>.
+    {% else %}
+      Übersicht aller Online-Reservierungen und Nachrichten.
+      <a href="{{ url_for('chef_logout') }}">Abmelden</a>.
+    {% endif %}
+  </p>
+</section>
+
+<section class="admin">
+  <h2>📅 {% if lang=='ru' %}Бронирования{% else %}Reservierungen{% endif %} ({{ reservations|length }})</h2>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}<ul class="flashes">{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>{% endif %}
+  {% endwith %}
+  {% if reservations %}
+  <table class="rtable">
+    <thead>
+      <tr>
+        <th>#</th><th>{% if lang=='ru' %}Дата{% else %}Datum{% endif %}</th>
+        <th>{% if lang=='ru' %}Время{% else %}Uhrzeit{% endif %}</th>
+        <th>{% if lang=='ru' %}Имя{% else %}Name{% endif %}</th>
+        <th>{% if lang=='ru' %}Тел.{% else %}Tel.{% endif %}</th>
+        <th>E-Mail</th>
+        <th>{% if lang=='ru' %}Гости{% else %}Gäste{% endif %}</th>
+        <th>{% if lang=='ru' %}Повод{% else %}Anlass{% endif %}</th>
+        <th>{% if lang=='ru' %}Заметка{% else %}Notiz{% endif %}</th>
+        <th>{% if lang=='ru' %}Статус{% else %}Status{% endif %}</th>
+        <th>{% if lang=='ru' %}Действие{% else %}Aktion{% endif %}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for row in reservations %}
+      <tr>
+        <td>{{ row.id }}</td><td>{{ row.date }}</td><td>{{ row.time }}</td>
+        <td>{{ row.name }}</td><td>{{ row.phone }}</td><td>{{ row.email }}</td>
+        <td>{{ row.guests }}</td>
+        <td>{{ row.occasion or '—' }}</td><td>{{ row.notes or '—' }}</td>
+        <td><span class="badge badge-{{ row.status }}">{{ {
+            'neu':'neu','bestaetigt':'bestätigt','abgelehnt':'abgelehnt','abgeschlossen':'abgeschlossen'
+          }[row.status] if lang=='de' else {
+            'neu':'новая','bestaetigt':'подтв.','abgelehnt':'отказ','abgeschlossen':'заверш.'
+          }[row.status] }}</span></td>
+        <td>
+          <form method="post" action="{{ url_for('set_status', rid=row.id) }}" class="inline">
+            <select name="status">
+              <option value="neu" {% if row.status=='neu' %}selected{% endif %}>
+                {% if lang=='ru' %}новая{% else %}neu{% endif %}
+              </option>
+              <option value="bestaetigt" {% if row.status=='bestaetigt' %}selected{% endif %}>
+                {% if lang=='ru' %}подтверждена{% else %}bestätigt{% endif %}
+              </option>
+              <option value="abgelehnt" {% if row.status=='abgelehnt' %}selected{% endif %}>
+                {% if lang=='ru' %}отклонена{% else %}abgelehnt{% endif %}
+              </option>
+              <option value="abgeschlossen" {% if row.status=='abgeschlossen' %}selected{% endif %}>
+                {% if lang=='ru' %}завершена{% else %}abgeschlossen{% endif %}
+              </option>
+            </select>
+            <button type="submit" class="btn btn-sm">
+              {% if lang=='ru' %}ОК{% else %}OK{% endif %}
+            </button>
+          </form>
+          <small>{{ row.created_at }}</small>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p>{% if lang=='ru' %}Бронирований пока нет.{% else %}Noch keine Reservierungen.{% endif %}</p>
+  {% endif %}
+
+  <h2>✉ {% if lang=='ru' %}Сообщения{% else %}Nachrichten{% endif %} ({{ contacts|length }})</h2>
+  {% if contacts %}
+  <table class="rtable">
+    <thead><tr>
+      <th>#</th><th>{% if lang=='ru' %}Имя{% else %}Name{% endif %}</th>
+      <th>E-Mail</th>
+      <th>{% if lang=='ru' %}Сообщение{% else %}Nachricht{% endif %}</th>
+      <th>{% if lang=='ru' %}Дата{% else %}Datum{% endif %}</th>
+    </tr></thead>
+    <tbody>
+      {% for c in contacts %}
+      <tr><td>{{ c.id }}</td><td>{{ c.name }}</td><td>{{ c.email }}</td><td>{{ c.message }}</td><td>{{ c.created_at }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p>{% if lang=='ru' %}Сообщений нет.{% else %}Keine Nachrichten.{% endif %}</p>
+  {% endif %}
+</section>
+{% endblock %}

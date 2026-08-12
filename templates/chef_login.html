@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{% if lang=='ru' %}Вход для шефа{% else %}Chef-Login{% endif %}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <h1>{% if lang=='ru' %}Вход для шефа{% else %}Chef-Login{% endif %}</h1>
+  <p class="hint">
+    {% if lang=='ru' %}
+      Введите пароль для доступа к списку бронирований. Эта страница не видна посетителям.
+    {% else %}
+      Bitte Passwort eingeben, um die Reservierungs-Übersicht zu öffnen.
+    {% endif %}
+  </p>
+</section>
+<section class="reservation">
+  <form method="post" class="res-form">
+    <label>{% if lang=='ru' %}Пароль *{% else %}Passwort *{% endif %}
+      <input type="password" name="password" required autofocus>
+    </label>
+    <button type="submit" class="btn btn-gold">{% if lang=='ru' %}Войти{% else %}Anmelden{% endif %}</button>
+  </form>
+</section>
+{% endblock %}

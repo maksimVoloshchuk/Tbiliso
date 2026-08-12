@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ t('nav_contact') }} · Tbiliso Oldenburg{% endblock %}
+{% block content %}
+<section class="page-head">
+  <h1>{{ t('nav_contact') }}</h1>
+  <p>{{ 'Sprechen Sie uns an — wir antworten gern.' if lang=='de'
+        else 'Свяжитесь с нами — мы с удовольствием ответим.' }}</p>
+</section>
+<section class="reservation">
+  <form id="contact-form" class="res-form">
+    <div class="grid-2">
+      <label>{{ t('form_name') }}<input name="name" required></label>
+      <label>{{ t('form_email') }}<input type="email" name="email" required></label>
+      <label class="full">{{ t('form_msg') }}<textarea name="message" rows="6" required></textarea></label>
+    </div>
+    <button type="submit" class="btn btn-gold">{{ t('form_send') }}</button>
+    <p id="contact-msg" class="msg"></p>
+  </form>
+  <aside class="res-side">
+    <h3>{{ t('address_h') }}</h3>
+    <p>{{ r.address }}</p>
+    <p>📞 <a href="tel:{{ r.phone }}">{{ r.phone_display }}</a></p>
+    <p>✉ <a href="mailto:{{ r.email }}">{{ r.email }}</a></p>
+  </aside>
+</section>
+{% endblock %}

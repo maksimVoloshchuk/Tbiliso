@@ -1,0 +1,237 @@
+/* =================================================================
+   Tbiliso – Первый грузинский ресторан в Ольденбурге
+   Палитра: бордо, золото, тёмное дерево, кремовая бумага
+   i18n-готов; грузинский шрифт удалён.
+   ================================================================= */
+:root{
+  --wine:        #6E1023;
+  --wine-dark:   #4A0517;
+  --gold:        #C8A35A;
+  --gold-light:  #E7C77A;
+  --cream:       #F6EFDD;
+  --paper:       #FBF7EB;
+  --wood:        #2B1B12;
+  --ink:         #1B1310;
+  --whatsapp:    #25D366;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Inter","Segoe UI",Georgia,serif;
+  color:var(--ink);background:var(--paper);line-height:1.65;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(110,16,35,.03) 0 2px, transparent 2px 14px),
+    repeating-linear-gradient(-45deg, rgba(200,163,90,.04) 0 2px, transparent 2px 14px);
+}
+
+h1,h2,h3,.logo-name{font-family:"Playfair Display",Georgia,serif;font-weight:700;color:var(--wine-dark);letter-spacing:.5px}
+h1{font-size:2.6rem;line-height:1.15;margin:0 0 .4rem}
+h2{font-size:1.8rem;margin:0 0 .6rem}
+h3{font-size:1.25rem;margin:0 0 .4rem}
+p{margin:.6rem 0}
+a{color:var(--wine);text-decoration:none}
+a:hover{text-decoration:underline}
+.center{text-align:center}
+.flash-bar{padding:.6rem 0}
+.flash{background:#e7f6e2;border-left:4px solid #1e7a3c;padding:.6rem .9rem;border-radius:6px;margin:.4rem 0;font-weight:600}
+
+.container{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+
+/* ---------- Header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:linear-gradient(180deg,var(--wine),var(--wine-dark));
+  color:var(--cream);
+  border-bottom:4px solid var(--gold);
+  box-shadow:0 4px 14px rgba(0,0,0,.12);
+}
+.header-inner{display:flex;align-items:center;gap:1.5rem;padding:.85rem 1.25rem;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:.75rem;color:var(--cream);text-decoration:none}
+.logo:hover{text-decoration:none}
+.logo-mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:54px;height:54px;font-size:2rem;font-weight:900;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,var(--gold-light),var(--gold) 70%);
+  color:var(--wine-dark);
+  border:2px solid var(--cream);
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.15);
+  font-family:"Playfair Display",serif;
+}
+.logo-name{font-size:1.4rem;color:var(--cream);line-height:1;margin:0}
+.logo-sub{font-size:.78rem;color:var(--gold-light);letter-spacing:.5px;margin-top:2px}
+
+.main-nav{margin-left:auto;display:flex;gap:1.1rem;flex-wrap:wrap}
+.main-nav a{color:var(--cream);font-weight:600;padding:.25rem 0;border-bottom:2px solid transparent;text-decoration:none}
+.main-nav a:hover{border-bottom-color:var(--gold);text-decoration:none;color:var(--gold-light)}
+.header-cta{white-space:nowrap}
+
+/* ---------- Переключатель языка ---------- */
+.lang-switch{display:inline-flex;background:rgba(255,255,255,.08);border:1px solid rgba(231,199,122,.4);border-radius:999px;padding:2px;margin-left:.5rem}
+.lang-btn{
+  display:inline-block;padding:.3rem .75rem;border-radius:999px;
+  color:var(--cream);font-weight:700;font-size:.78rem;letter-spacing:1px;text-decoration:none;
+}
+.lang-btn:hover{background:rgba(255,255,255,.1);text-decoration:none}
+.lang-btn.active{background:linear-gradient(180deg,var(--gold-light),var(--gold));color:var(--wine-dark)}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-block;padding:.7rem 1.25rem;border-radius:8px;
+  font-weight:700;letter-spacing:.4px;cursor:pointer;border:none;text-decoration:none;
+  transition:transform .15s, box-shadow .15s;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.18);text-decoration:none}
+.btn-gold{background:linear-gradient(180deg,var(--gold-light),var(--gold));color:var(--wine-dark);border:1px solid #8a6a2a}
+.btn-outline{background:transparent;color:var(--wine);border:2px solid var(--wine)}
+.btn-outline:hover{background:var(--wine);color:var(--cream)}
+.btn-wolt{background:#00C2E8;color:#fff}
+.btn-wolt:hover{background:#009bb9;color:#fff}
+.btn-wolt-outline{background:transparent;border:2px solid #00C2E8;color:#0081a6}
+.btn-big,.btn.big{padding:1.1rem 2.2rem;font-size:1.15rem}
+.btn-sm{padding:.25rem .6rem;font-size:.8rem}
+
+.kicker{color:var(--gold);letter-spacing:3px;font-weight:700;text-transform:uppercase;font-size:.8rem;margin:0 0 .75rem}
+.gold{color:var(--gold);background:linear-gradient(180deg,var(--gold-light),var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hint{color:#7a6a55;font-size:.85rem;font-style:italic}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;color:var(--cream);overflow:hidden;padding:5rem 0}
+.hero-bg{
+  position:absolute;inset:0;background:
+    radial-gradient(ellipse at 20% 30%, rgba(200,163,90,.20), transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(231,199,122,.16), transparent 60%),
+    linear-gradient(135deg,var(--wine-dark),var(--wine) 60%,#3a0712);
+  z-index:0;
+}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle at 10% 90%, rgba(200,163,90,.18) 0 6px, transparent 7px),
+    radial-gradient(circle at 30% 50%, rgba(200,163,90,.10) 0 4px, transparent 5px),
+    radial-gradient(circle at 70% 20%, rgba(200,163,90,.18) 0 6px, transparent 7px),
+    radial-gradient(circle at 90% 80%, rgba(200,163,90,.10) 0 4px, transparent 5px);
+}
+.hero-content{position:relative;z-index:1}
+.hero h1{color:var(--cream);font-size:3rem;margin-bottom:1rem}
+.hero-lead{font-size:1.15rem;max-width:780px;color:#f3e7c8}
+.hero-actions{margin:1.4rem 0 2rem;display:flex;gap:1rem;flex-wrap:wrap}
+.hero-actions .btn-wolt-outline{color:var(--cream);border-color:var(--cream)}
+.hero-actions .btn-wolt-outline:hover{background:var(--cream);color:#009bb9}
+.hero-meta{display:flex;gap:2rem;flex-wrap:wrap;color:var(--gold-light)}
+.hero-meta>div{display:flex;flex-direction:column;align-items:flex-start}
+.hero-meta .num{font-size:1.6rem;font-weight:900;color:var(--gold);font-family:"Playfair Display",serif}
+
+/* ---------- Sections ---------- */
+.section{padding:4rem 0}
+.section.alt{background:linear-gradient(180deg,#f5ecd1,var(--paper))}
+.section-head{text-align:center;margin-bottom:2.5rem}
+.section-head p{color:#5a4937}
+
+.cta-section{
+  background:
+    repeating-linear-gradient(45deg, rgba(200,163,90,.12) 0 12px, transparent 12px 24px),
+    linear-gradient(135deg,var(--wine),var(--wine-dark));
+  color:var(--cream);text-align:center;
+  border-top:4px solid var(--gold);border-bottom:4px solid var(--gold);
+}
+.cta-section h2{color:var(--cream)}
+.cta-section .btn-gold{margin-top:.7rem}
+
+/* ---------- Dish grid ---------- */
+.dish-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem}
+.dish-card{
+  background:#fff;border-radius:14px;overflow:hidden;
+  box-shadow:0 6px 18px rgba(74,5,23,.15);
+  border:1px solid rgba(200,163,90,.4);
+  transition:transform .2s;
+}
+.dish-card:hover{transform:translateY(-4px)}
+.dish-card img{width:100%;height:200px;object-fit:cover;display:block}
+.dish-body{padding:1rem 1.2rem 1.3rem}
+.dish-body h3{margin:0 0 .4rem}
+.price{display:inline-block;margin-top:.6rem;font-weight:900;color:var(--wine)}
+.price::before{content:"❖ "}
+
+/* ---------- Split rows ---------- */
+.row.split{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+@media (max-width:780px){.row.split{grid-template-columns:1fr}}
+.rounded{border-radius:14px;box-shadow:0 10px 28px rgba(74,5,23,.25);border:3px solid var(--gold);width:100%;height:auto}
+
+/* ---------- Check list ---------- */
+.check-list{list-style:none;padding:0;margin:1rem 0 1.4rem}
+.check-list li{padding-left:1.6rem;position:relative}
+.check-list li::before{content:"✦";position:absolute;left:0;color:var(--gold);font-weight:900}
+
+/* ---------- Menu ---------- */
+.menu-list ul{list-style:none;padding:0;margin:0 0 1.4rem}
+.menu-list li{
+  display:flex;justify-content:space-between;gap:1rem;
+  padding:.65rem 0;border-bottom:1px dashed rgba(110,16,35,.3);
+}
+.menu-list li b{color:var(--wine-dark)}
+
+/* ---------- Page head ---------- */
+.page-head{text-align:center;padding:3rem 1rem 1.5rem;border-bottom:1px solid rgba(110,16,35,.2)}
+.page-head p{color:#5a4937}
+
+/* ---------- Reservation ---------- */
+.reservation{display:grid;grid-template-columns:2fr 1fr;gap:2rem;padding:2rem 0 4rem}
+@media (max-width:780px){.reservation{grid-template-columns:1fr}}
+.res-form{background:#fff;border:1px solid rgba(200,163,90,.5);border-radius:14px;padding:1.6rem;box-shadow:0 8px 22px rgba(74,5,23,.10)}
+.res-form label{display:flex;flex-direction:column;font-weight:600;color:var(--wine-dark);font-size:.9rem}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid-2 .full{grid-column:1 / -1}
+@media (max-width:680px){.grid-2{grid-template-columns:1fr}}
+.res-form input,.res-form select,.res-form textarea{
+  margin-top:.3rem;padding:.7rem;border:1px solid #d6c89c;border-radius:8px;
+  font:inherit;background:#fff;
+}
+.res-form input:focus,.res-form select:focus,.res-form textarea:focus{
+  outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,163,90,.3)
+}
+.res-form button{margin-top:1.4rem}
+.msg{margin-top:1rem;font-weight:700}
+.msg.ok{color:#1e7a3c}.msg.err{color:#a30d0d}
+
+.res-side{background:linear-gradient(135deg,var(--wine),var(--wine-dark));color:var(--cream);padding:1.4rem;border-radius:14px;border:2px solid var(--gold)}
+.res-side h3{color:var(--gold-light);margin-top:0}
+.res-side a{color:var(--gold-light)}
+
+.hours{list-style:none;padding:0;margin:0}
+.hours li{display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px dashed rgba(200,163,90,.3)}
+
+/* ---------- Chef Panel ---------- */
+.admin{background:#fff;padding:1.6rem;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.10);margin:1rem 0 4rem}
+.rtable{width:100%;border-collapse:collapse;font-size:.9rem}
+.rtable th,.rtable td{padding:.55rem .7rem;border-bottom:1px solid #e6ddc3;text-align:left;vertical-align:top}
+.rtable th{background:var(--wine);color:var(--cream);font-weight:700;position:sticky;top:0}
+.rtable tbody tr:nth-child(odd){background:#fffbf0}
+.badge{padding:.15rem .55rem;border-radius:6px;font-size:.75rem;font-weight:700;color:#fff}
+.badge-neu{background:#888}
+.badge-bestaetigt{background:#1e7a3c}
+.badge-abgelehnt{background:#a30d0d}
+.badge-abgeschlossen{background:#3a5e88}
+.inline{display:inline-flex;gap:.3rem;align-items:center}
+.inline select{padding:.2rem;border-radius:6px;border:1px solid #d6c89c}
+.flashes{list-style:none;padding:0;margin:0 0 1rem}
+
+.legal p{background:#fff;padding:.7rem 1rem;border-left:4px solid var(--gold);border-radius:6px}
+
+/* ---------- Footer ---------- */
+.site-footer{
+  background:linear-gradient(180deg,var(--wood),#170c08);
+  color:var(--cream);padding:3rem 0 1rem;border-top:5px solid var(--gold);
+}
+.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+@media (max-width:900px){.footer-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.footer-grid{grid-template-columns:1fr}}
+.site-footer h4{color:var(--gold-light);margin:0 0 .6rem;font-family:"Playfair Display",serif}
+.site-footer a{color:var(--cream)}
+.site-footer a:hover{color:var(--gold-light)}
+.footer-base{margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(200,163,90,.3);text-align:center;color:#a79782;font-size:.8rem}
+.footer-base a{color:#a79782;text-decoration:underline}
+
+/* Никакой «admin» ссылки в футере — стили на всякий случай */
+a[href*="/admin"], a[href*="admin.html"]{display:none !important}
