@@ -64,6 +64,7 @@ def init_db():
     """)
     conn.commit()
     conn.close()
+    init_db()
 
 # ---------- i18n: DE + RU (грузинский удалён) ----------
 LANGS = ("de", "ru")
