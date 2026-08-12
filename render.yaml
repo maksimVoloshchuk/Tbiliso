@@ -7,6 +7,6 @@ services:
     startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --timeout 60
     envVars:
       - key: TBILISO_CHEF_PW
-        value: TbilisoChef2026!
+        value:TbilisoChefZurab
       - key: TBILISO_SECRET
         generateValue: true
