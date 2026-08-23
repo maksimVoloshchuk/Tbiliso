@@ -6,13 +6,13 @@
   <p>{{ t('menu_p') }}</p>
 </section>
 
-<section class="menu-list">
-  <h2>{{ t('m_chatsch') }} — Chatschapuri</h2>
+<section class="menu-list container">
+  <h2>{{ t('m_chatsch') }}</h2>
   <ul>
-    {% if lang == 'ru' %}
-      <li><b>Аджарули</b> · «Лодочка» с сыром сулгуни и желтком <span>€ 12,90</span></li>
-      <li><b>Имереули</b> · Классическое хачапури с сыром <span>€ 11,50</span></li>
-      <li><b>Мчади</b> · Кукурузный хлеб с сыром и маслом <span>€ 8,90</span></li>
+    {% if lang == 'en' %}
+      <li><b>Adjarian</b> · Cheese-bread boat with sulguni & egg yolk <span>€ 12,90</span></li>
+      <li><b>Imeruli</b> · Classic cheese khachapuri <span>€ 11,50</span></li>
+      <li><b>Mchadi</b> · Cornbread with cheese & butter <span>€ 8,90</span></li>
     {% else %}
       <li><b>Adscharuli</b> · Käse-Brot-Boot mit Sulguni & Eigelb <span>€ 12,90</span></li>
       <li><b>Imeruli</b> · Klassisches Käse-Chatschapuri <span>€ 11,50</span></li>
@@ -20,11 +20,11 @@
     {% endif %}
   </ul>
 
-  <h2>{{ t('m_chink') }} — Chinkali</h2>
+  <h2>{{ t('m_chink') }}</h2>
   <ul>
-    {% if lang == 'ru' %}
-      <li><b>Говядина & свинина</b> · с бульоном, классика <span>5 шт. € 9,50 / 10 шт. € 17,90</span></li>
-      <li><b>Сыр & грибы</b> · вегетарианские <span>5 шт. € 8,50</span></li>
+    {% if lang == 'en' %}
+      <li><b>Beef & pork</b> · with broth, classic <span>5 pcs € 9.50 / 10 pcs € 17.90</span></li>
+      <li><b>Cheese & mushroom</b> · vegetarian <span>5 pcs € 8.50</span></li>
     {% else %}
       <li><b>Rind & Schwein</b> · mit Brühe, klassisch <span>5 St. € 9,50 / 10 St. € 17,90</span></li>
       <li><b>Käse & Pilze</b> · vegetarisch <span>5 St. € 8,50</span></li>
@@ -33,27 +33,27 @@
 
   <h2>{{ t('m_main') }}</h2>
   <ul>
-    {% if lang == 'ru' %}
-      <li><b>Чакопули</b> · Баранина с эстрагоном и сливами <span>€ 18,90</span></li>
-      <li><b>Сациви</b> · Курица в ореховом соусе (холодная) <span>€ 14,50</span></li>
-      <li><b>Лобио</b> · Тушёная фасоль с орехами и специями <span>€ 11,90</span></li>
-      <li><b>Шаурма</b> · Чакмасур-курица на лаваше <span>€ 13,90</span></li>
-      <li><b>Мцвади</b> · Баранина на шампурах (от 2 чел.) <span>€ 22,90 / чел.</span></li>
+    {% if lang == 'en' %}
+      <li><b>Chakapuli</b> · Lamb with tarragon & plums <span>€ 18,90</span></li>
+      <li><b>Satsivi</b> · Chicken in walnut sauce (cold) <span>€ 14,50</span></li>
+      <li><b>Lobio</b> · Bean stew with walnut & spices <span>€ 11,90</span></li>
+      <li><b>Shawarma</b> · Chakmasur-style chicken on lavash <span>€ 13,90</span></li>
+      <li><b>Mzwadi</b> · Lamb skewers (from 2 guests) <span>€ 22,90 p.p.</span></li>
     {% else %}
       <li><b>Chakapuli</b> · Lamm mit Estragon & Pflaumen <span>€ 18,90</span></li>
       <li><b>Satsivi</b> · Hähnchen in Walnuss-Sauce (kalt) <span>€ 14,50</span></li>
       <li><b>Lobio</b> · Bohneneintopf mit Walnuss & Gewürzen <span>€ 11,90</span></li>
-      <li><b>Schawarma</b> · Tschackmaschuri-Hähnchen vom Lavasch <span>€ 13,90</span></li>
+      <li><b>Schawarma</b> · Tschakmaschuri-Hähnchen vom Lavasch <span>€ 13,90</span></li>
       <li><b>Mzwadi</b> · Lamm am Spieß (ab 2 Pers.) <span>€ 22,90 p.P.</span></li>
     {% endif %}
   </ul>
 
   <h2>{{ t('m_salads') }}</h2>
   <ul>
-    {% if lang == 'ru' %}
-      <li><b>Грузинский салат</b> · Помидоры, огурцы, орехи, гранат <span>€ 8,50</span></li>
-      <li><b>Бадриджани</b> · Рулетики из баклажанов с ореховой пастой <span>€ 9,90</span></li>
-      <li><b>Пхали</b> · Овощная паста с орехами <span>€ 7,90</span></li>
+    {% if lang == 'en' %}
+      <li><b>Georgian salad</b> · Tomato, cucumber, walnut, pomegranate <span>€ 8,50</span></li>
+      <li><b>Badrijani</b> · Eggplant rolls with walnut paste <span>€ 9,90</span></li>
+      <li><b>Pkhali</b> · Vegetable paste with walnut <span>€ 7,90</span></li>
     {% else %}
       <li><b>Georgischer Salat</b> · Tomate, Gurke, Walnuss, Granatapfel <span>€ 8,50</span></li>
       <li><b>Badridzhani</b> · Auberginenröllchen mit Walnuss-Paste <span>€ 9,90</span></li>
@@ -63,11 +63,11 @@
 
   <h2>{{ t('m_wine') }}</h2>
   <ul>
-    {% if lang == 'ru' %}
-      <li><b>Саперави</b> · сухое, насыщенное <span>0,2 л € 7,90 / бут. € 26,00</span></li>
-      <li><b>Амбер</b> · оранжевое вино, грузинское <span>0,2 л € 8,50 / бут. € 28,00</span></li>
-      <li><b>Киндзмараули</b> · полусладкое, красное <span>0,2 л € 6,90 / бут. € 22,00</span></li>
-      <li><b>Цинандали</b> · белое, сухое <span>0,2 л € 6,50 / бут. € 21,00</span></li>
+    {% if lang == 'en' %}
+      <li><b>Saperavi</b> · dry, full-bodied <span>0.2 l € 7.90 / bottle € 26.00</span></li>
+      <li><b>Amber</b> · orange wine, Georgian <span>0.2 l € 8.50 / bottle € 28.00</span></li>
+      <li><b>Kindzmarauli</b> · semi-sweet, red <span>0.2 l € 6.90 / bottle € 22.00</span></li>
+      <li><b>Tsinandali</b> · white, dry <span>0.2 l € 6.50 / bottle € 21.00</span></li>
     {% else %}
       <li><b>Saperavi</b> · trocken, kräftig <span>0,2 l € 7,90 / Fl. € 26,00</span></li>
       <li><b>Amber</b> · Orange Wine, georgisch <span>0,2 l € 8,50 / Fl. € 28,00</span></li>
@@ -78,9 +78,9 @@
 
   <h2>{{ t('m_dessert') }}</h2>
   <ul>
-    {% if lang == 'ru' %}
-      <li><b>Чурчхела</b> · Орехи в виноградном соке <span>€ 5,50</span></li>
-      <li><b>Гelaто</b> · домашнее мороженое <span>€ 6,50</span></li>
+    {% if lang == 'en' %}
+      <li><b>Churchkhela</b> · Walnuts in grape juice <span>€ 5,50</span></li>
+      <li><b>Gelato</b> · homemade ice cream <span>€ 6,50</span></li>
     {% else %}
       <li><b>Tschurtschchela</b> · Walnüsse in Traubensaft <span>€ 5,50</span></li>
       <li><b>Gelatow</b> · hausgemacht <span>€ 6,50</span></li>

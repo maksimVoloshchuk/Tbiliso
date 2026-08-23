@@ -3,10 +3,10 @@
 {% block content %}
 <section class="page-head"><h1>{{ t('impressum_h') }}</h1></section>
 <section class="section legal">
-  <p><strong>{% if lang=='ru' %}Владелец{% else %}Anbieter{% endif %}</strong><br>{{ r.owner }} · Tbiliso<br>{{ r.address }}</p>
-  <p><strong>{% if lang=='ru' %}Контакт{% else %}Kontakt{% endif %}</strong><br>
-     {% if lang=='ru' %}Телефон{% else %}Telefon{% endif %}: {{ r.phone_display }}<br>E-Mail: {{ r.email }}</p>
-  <p><strong>{% if lang=='ru' %}Ответственный за содержание{% else %}Verantwortlich für den Inhalt{% endif %}</strong><br>{{ r.owner }}, {% if lang=='ru' %}адрес как выше{% else %}Anschrift wie oben{% endif %}.</p>
+  <p><strong>{% if lang=='en' %}Provider{% else %}Anbieter{% endif %}</strong><br>{{ r.owner }} · Tbiliso<br>{{ r.address }}</p>
+  <p><strong>{% if lang=='en' %}Contact{% else %}Kontakt{% endif %}</strong><br>
+     {% if lang=='en' %}Phone{% else %}Telefon{% endif %}: {{ r.phone_display }}<br>E-Mail: {{ r.email }}</p>
+  <p><strong>{% if lang=='en' %}Responsible for content{% else %}Verantwortlich für den Inhalt{% endif %}</strong><br>{{ r.owner }}, {% if lang=='en' %}address as above{% else %}Anschrift wie oben{% endif %}.</p>
   <p class="hint">{{ t('impressum_legal_hint') }}</p>
 </section>
 {% endblock %}

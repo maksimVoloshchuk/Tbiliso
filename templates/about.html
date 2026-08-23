@@ -3,13 +3,12 @@
 {% block content %}
 <section class="page-head">
   <h1>{{ t('about_h_1') }}</h1>
-  <p>{{ 'Tbiliso — das erste georgische Restaurant in Oldenburg.' if lang=='de'
-        else 'Tbiliso — первый грузинский ресторан в Ольденбурге.' }}</p>
+  <p>{% if lang=='en' %}Tbiliso — the first Georgian restaurant in Oldenburg.{% else %}Tbiliso — das erste georgische Restaurant in Oldenburg.{% endif %}</p>
 </section>
 <section class="section">
   <div class="row split">
     <div class="col">
-      <h2>{{ 'Eine Liebeserklärung an Georgien' if lang=='de' else 'Признание в любви Грузии' }}</h2>
+      <h2>{% if lang=='en' %}A love letter to Georgia{% else %}Eine Liebeserklärung an Georgien{% endif %}</h2>
       <p>
         {% if lang == 'de' %}
           Eröffnet von <strong>{{ r.owner }}</strong>, bringt Tbiliso die Seele der georgischen
@@ -17,12 +16,13 @@
           frisch aus dem Steinofen, Chinkali werden von Hand gedreht, und unsere Weine stammen aus
           kleinen, familiengeführten Kellereien in Kachetien.
         {% else %}
-          Открытый <strong>{{ r.owner }}</strong>, Tbiliso приносит душу грузинской кухни в Ольденбург.
-          Все блюда готовятся по оригинальным рецептам. Хлеб — прямо из каменной печи, хинкали лепятся
-          вручную, а вина поставляются из небольших семейных виноделен в Кахетии.
+          Founded by <strong>{{ r.owner }}</strong>, Tbiliso brings the soul of Georgian
+          cuisine to Oldenburg. Every dish is prepared from original recipes. Our bread comes
+          fresh from the stone oven, khinkali are folded by hand, and our wines come from
+          small family-run cellars in Kakheti.
         {% endif %}
       </p>
-      <h3>{{ 'Was uns besonders macht' if lang=='de' else 'Что нас отличает' }}</h3>
+      <h3>{% if lang=='en' %}What makes us special{% else %}Was uns besonders macht{% endif %}</h3>
       <ul class="check-list">
         <li>{{ t('about_p_li_1') }}</li>
         <li>{{ t('about_p_li_2') }}</li>
@@ -33,7 +33,7 @@
     </div>
     <div class="col">
       <img class="rounded" src="https://sspark.genspark.ai/cfimages?u1=2d6Uisl8uMa9xzs6BP9CeTfy%2B13%2FWrLj9oF%2B167K%2FelPVabuWm4J2UBu6foNs3Il84Ea99UE9XiA3fcSpbty6oL5sEY81qpwaSoePAEn&u2=RpUsfme9eofy696K&width=900"
-           alt="Tbilissi Altstadt" loading="lazy">
+           alt="Tbilisi Old Town" loading="lazy">
     </div>
   </div>
 </section>

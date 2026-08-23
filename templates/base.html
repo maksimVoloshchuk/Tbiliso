@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ 'ru' if lang == 'ru' else 'de' }}">
+<html lang="{{ 'en' if lang == 'en' else 'de' }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% block title %}Tbiliso – Erstes georgisches Restaurant in Oldenburg{% endblock %}</title>
-<meta name="description" content="Tbiliso Oldenburg – authentische georgische Küche: Chatschapuri, Chinkali, Satsivi, georgischer Wein und Qvevri-Spezialitäten. Reservierung & Wolt-Lieferung.">
+<title>{% block title %}Tbiliso – First Georgian Restaurant in Oldenburg{% endblock %}</title>
+<meta name="description" content="Tbiliso Oldenburg – authentic Georgian cuisine: Khachapuri, Khinkali, Satsivi, Georgian wine and Qvevri specialties. Reservation & Wolt delivery.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236E1023'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='Georgia,serif' font-size='38' font-weight='900' fill='%23C8A35A'%3ET%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
       <span class="logo-mark">T</span>
       <div>
         <div class="logo-name">Tbiliso</div>
-        <div class="logo-sub">georgisches Restaurant · Oldenburg</div>
+        <div class="logo-sub">{% if lang=='en' %}Georgian Restaurant · Oldenburg{% else %}Georgisches Restaurant · Oldenburg{% endif %}</div>
       </div>
     </a>
     <nav class="main-nav">
@@ -29,9 +29,9 @@
       <a href="{{ url_for('reservation_page') }}">{{ t('nav_res') }}</a>
       <a href="{{ url_for('contact') }}">{{ t('nav_contact') }}</a>
     </nav>
-    <div class="lang-switch" aria-label="Sprache">
+    <div class="lang-switch" aria-label="Language">
       <a href="{{ url_for('set_lang', code='de') }}" class="lang-btn {% if lang=='de' %}active{% endif %}">DE</a>
-      <a href="{{ url_for('set_lang', code='ru') }}" class="lang-btn {% if lang=='ru' %}active{% endif %}">RU</a>
+      <a href="{{ url_for('set_lang', code='en') }}" class="lang-btn {% if lang=='en' %}active{% endif %}">EN</a>
     </div>
     <a href="{{ url_for('reservation_page') }}" class="btn btn-gold header-cta">{{ t('cta_reserve') }}</a>
   </div>
@@ -61,7 +61,7 @@
           <div class="logo-sub">{{ t('tagline') }}</div>
         </div>
       </div>
-      <p>{{ 'Wir heißen Sie von Herzen willkommen.' if lang=='de' else 'Мы рады приветствовать вас от всего сердца.' }}</p>
+      <p>{% if lang=='en' %}We welcome you from the heart.{% else %}Wir heißen Sie von Herzen willkommen.{% endif %}</p>
     </div>
     <div>
       <h4>{{ t('address_h') }}</h4>
@@ -80,17 +80,16 @@
     <div>
       <h4>{{ t('delivery_h') }}</h4>
       <p>
-        <a class="btn btn-wolt" href="https://wolt.com/en/deu/oldenburg/restaurant/tbiliso-georgische-spezialitaten" target="_blank" rel="noopener">
+        <a class="btn btn-wolt" href="{{https://wolt.com/en/deu/oldenburg/restaurant/tbiliso-georgische-spezialitaten}}" target="_blank" rel="noopener">
           🍽 Wolt
         </a>
       </p>
-      <p class="hint">⚠ {{ 'Wolt-City-Link Oldenburg. Die Restaurant-URL wird vom Betreiber gepflegt.' if lang=='de'
-                    else 'Ссылка на городскую страницу Wolt Ольденбург. Прямая ссылка ресторана обновляется владельцем.' }}</p>
+      <p class="hint">⚠ {% if lang=='en' %}Wolt Oldenburg page — restaurant link is maintained by the owner.{% else %}Wolt-City-Link Oldenburg — Restaurant-URL wird vom Betreiber gepflegt.{% endif %}</p>
       <p>Instagram: <a href="https://www.instagram.com/" target="_blank" rel="noopener">@tbiliso.oldenburg</a></p>
     </div>
   </div>
   <div class="footer-base">
-    © 2026 Tbiliso · {{ 'Inhaber' if lang=='de' else 'Владелец' }}: {{ r.owner }} ·
+    © 2026 Tbiliso · {% if lang=='en' %}Owner{% else %}Inhaber{% endif %}: {{ r.owner }} ·
     <a href="{{ url_for('impressum') }}">{{ t('impressum_h') }}</a>
   </div>
 </footer>

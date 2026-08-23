@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}{% if lang=='ru' %}Вход для шефа{% else %}Chef-Login{% endif %}{% endblock %}
+{% block title %}{% if lang=='en' %}Chef Login{% else %}Chef-Login{% endif %}{% endblock %}
 {% block content %}
 <section class="page-head">
-  <h1>{% if lang=='ru' %}Вход для шефа{% else %}Chef-Login{% endif %}</h1>
+  <h1>{% if lang=='en' %}Chef Login{% else %}Chef-Login{% endif %}</h1>
   <p class="hint">
-    {% if lang=='ru' %}
-      Введите пароль для доступа к списку бронирований. Эта страница не видна посетителям.
+    {% if lang == 'en' %}
+      Enter the password to access the reservations overview. This page is not visible to guests.
     {% else %}
       Bitte Passwort eingeben, um die Reservierungs-Übersicht zu öffnen.
     {% endif %}
@@ -13,10 +13,10 @@
 </section>
 <section class="reservation">
   <form method="post" class="res-form">
-    <label>{% if lang=='ru' %}Пароль *{% else %}Passwort *{% endif %}
+    <label>{% if lang=='en' %}Password *{% else %}Passwort *{% endif %}
       <input type="password" name="password" required autofocus>
     </label>
-    <button type="submit" class="btn btn-gold">{% if lang=='ru' %}Войти{% else %}Anmelden{% endif %}</button>
+    <button type="submit" class="btn btn-gold">{% if lang=='en' %}Log in{% else %}Anmelden{% endif %}</button>
   </form>
 </section>
 {% endblock %}

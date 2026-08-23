@@ -3,8 +3,7 @@
 {% block content %}
 <section class="page-head">
   <h1>{{ t('nav_res') }}</h1>
-  <p>{{ 'Sichern Sie sich Ihren Platz im ersten georgischen Restaurant Oldenburgs.' if lang=='de'
-        else 'Забронируйте столик в первом грузинском ресторане Ольденбурга.' }}</p>
+  <p>{% if lang=='en' %}Secure your seat at the first Georgian restaurant in Oldenburg.{% else %}Sichern Sie sich Ihren Platz im ersten georgischen Restaurant Oldenburgs.{% endif %}</p>
 </section>
 
 <section class="reservation">
@@ -16,12 +15,12 @@
       <label>{{ t('form_occasion') }}
         <select name="occasion">
           <option value="">—</option>
-          {% if lang == 'ru' %}
-            <option>День рождения</option>
-            <option>Годовщина</option>
-            <option>Деловой ужин</option>
-            <option>Семейный праздник</option>
-            <option>Просто так</option>
+          {% if lang == 'en' %}
+            <option>Birthday</option>
+            <option>Anniversary</option>
+            <option>Business dinner</option>
+            <option>Family celebration</option>
+            <option>Just because</option>
           {% else %}
             <option>Geburtstag</option>
             <option>Jahrestag</option>
@@ -35,7 +34,7 @@
       <label>{{ t('form_time') }}<input type="time" name="time" required></label>
       <label>{{ t('form_guests') }}<input type="number" name="guests" required min="1" max="20" value="2"></label>
       <label class="full">{{ t('form_notes') }}<textarea name="notes" rows="3"
-        placeholder="{% if lang=='de' %}Allergien, Kinderstuhl, Barrierefreiheit …{% else %}Аллергии, детский стул, доступность …{% endif %}"></textarea></label>
+        placeholder="{% if lang=='en' %}Allergies, child seat, accessibility …{% else %}Allergien, Kinderstuhl, Barrierefreiheit …{% endif %}"></textarea></label>
     </div>
     <button type="submit" class="btn btn-gold">{{ t('form_submit') }}</button>
     <p id="res-msg" class="msg"></p>
@@ -48,8 +47,7 @@
     </ul>
     <p>📞 <a href="tel:{{ r.phone }}">{{ r.phone_display }}</a><br>
        ✉ <a href="mailto:{{ r.email }}">{{ r.email }}</a></p>
-    <p class="hint">{{ 'Bei kurzfristigen Reservierungen rufen Sie uns bitte direkt an.' if lang=='de'
-                    else 'Для срочного бронирования, пожалуйста, позвоните нам напрямую.' }}</p>
+    <p class="hint">{% if lang=='en' %}For last-minute reservations please call us directly.{% else %}Bei kurzfristigen Reservierungen rufen Sie uns bitte direkt an.{% endif %}</p>
   </aside>
 </section>
 {% endblock %}

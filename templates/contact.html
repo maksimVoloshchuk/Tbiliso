@@ -3,8 +3,7 @@
 {% block content %}
 <section class="page-head">
   <h1>{{ t('nav_contact') }}</h1>
-  <p>{{ 'Sprechen Sie uns an — wir antworten gern.' if lang=='de'
-        else 'Свяжитесь с нами — мы с удовольствием ответим.' }}</p>
+  <p>{% if lang=='en' %}Get in touch — we are happy to hear from you.{% else %}Sprechen Sie uns an — wir antworten gern.{% endif %}</p>
 </section>
 <section class="reservation">
   <form id="contact-form" class="res-form">

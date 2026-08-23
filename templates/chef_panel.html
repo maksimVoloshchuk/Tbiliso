@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-{% block title %}{% if lang=='ru' %}Панель шефа{% else %}Chef-Bereich{% endif %} · Tbiliso{% endblock %}
+{% block title %}{% if lang=='en' %}Chef Area{% else %}Chef-Bereich{% endif %} · Tbiliso{% endblock %}
 {% block content %}
 <section class="page-head">
-  <h1>{% if lang=='ru' %}🧑‍🍳 Панель шефа{% else %}🧑‍🍳 Chef-Bereich{% endif %}</h1>
+  <h1>🧑‍🍳 {% if lang=='en' %}Chef Area{% else %}Chef-Bereich{% endif %}</h1>
   <p>
-    {% if lang=='ru' %}
-      Здесь видны все онлайн-бронирования и сообщения.
-      <a href="{{ url_for('chef_logout') }}">Выйти</a>.
+    {% if lang == 'en' %}
+      Overview of all online reservations and messages.
+      <a href="{{ url_for('chef_logout') }}">Log out</a>.
     {% else %}
       Übersicht aller Online-Reservierungen und Nachrichten.
       <a href="{{ url_for('chef_logout') }}">Abmelden</a>.
@@ -15,24 +15,25 @@
 </section>
 
 <section class="admin">
-  <h2>📅 {% if lang=='ru' %}Бронирования{% else %}Reservierungen{% endif %} ({{ reservations|length }})</h2>
+  <h2>📅 {% if lang=='en' %}Reservations{% else %}Reservierungen{% endif %} ({{ reservations|length }})</h2>
   {% with messages = get_flashed_messages() %}
     {% if messages %}<ul class="flashes">{% for m in messages %}<li>{{ m }}</li>{% endfor %}</ul>{% endif %}
   {% endwith %}
   {% if reservations %}
+  <div style="overflow-x:auto">
   <table class="rtable">
     <thead>
       <tr>
-        <th>#</th><th>{% if lang=='ru' %}Дата{% else %}Datum{% endif %}</th>
-        <th>{% if lang=='ru' %}Время{% else %}Uhrzeit{% endif %}</th>
-        <th>{% if lang=='ru' %}Имя{% else %}Name{% endif %}</th>
-        <th>{% if lang=='ru' %}Тел.{% else %}Tel.{% endif %}</th>
+        <th>#</th><th>{% if lang=='en' %}Date{% else %}Datum{% endif %}</th>
+        <th>{% if lang=='en' %}Time{% else %}Uhrzeit{% endif %}</th>
+        <th>{% if lang=='en' %}Name{% else %}Name{% endif %}</th>
+        <th>{% if lang=='en' %}Phone{% else %}Tel.{% endif %}</th>
         <th>E-Mail</th>
-        <th>{% if lang=='ru' %}Гости{% else %}Gäste{% endif %}</th>
-        <th>{% if lang=='ru' %}Повод{% else %}Anlass{% endif %}</th>
-        <th>{% if lang=='ru' %}Заметка{% else %}Notiz{% endif %}</th>
-        <th>{% if lang=='ru' %}Статус{% else %}Status{% endif %}</th>
-        <th>{% if lang=='ru' %}Действие{% else %}Aktion{% endif %}</th>
+        <th>{% if lang=='en' %}Guests{% else %}Gäste{% endif %}</th>
+        <th>{% if lang=='en' %}Occasion{% else %}Anlass{% endif %}</th>
+        <th>{% if lang=='en' %}Note{% else %}Notiz{% endif %}</th>
+        <th>{% if lang=='en' %}Status{% else %}Status{% endif %}</th>
+        <th>{% if lang=='en' %}Action{% else %}Aktion{% endif %}</th>
       </tr>
     </thead>
     <tbody>
@@ -43,28 +44,28 @@
         <td>{{ row.guests }}</td>
         <td>{{ row.occasion or '—' }}</td><td>{{ row.notes or '—' }}</td>
         <td><span class="badge badge-{{ row.status }}">{{ {
+            'neu':'new','bestaetigt':'confirmed','abgelehnt':'declined','abgeschlossen':'completed'
+          }[row.status] if lang=='en' else {
             'neu':'neu','bestaetigt':'bestätigt','abgelehnt':'abgelehnt','abgeschlossen':'abgeschlossen'
-          }[row.status] if lang=='de' else {
-            'neu':'новая','bestaetigt':'подтв.','abgelehnt':'отказ','abgeschlossen':'заверш.'
           }[row.status] }}</span></td>
         <td>
           <form method="post" action="{{ url_for('set_status', rid=row.id) }}" class="inline">
             <select name="status">
               <option value="neu" {% if row.status=='neu' %}selected{% endif %}>
-                {% if lang=='ru' %}новая{% else %}neu{% endif %}
+                {% if lang=='en' %}new{% else %}neu{% endif %}
               </option>
               <option value="bestaetigt" {% if row.status=='bestaetigt' %}selected{% endif %}>
-                {% if lang=='ru' %}подтверждена{% else %}bestätigt{% endif %}
+                {% if lang=='en' %}confirmed{% else %}bestätigt{% endif %}
               </option>
               <option value="abgelehnt" {% if row.status=='abgelehnt' %}selected{% endif %}>
-                {% if lang=='ru' %}отклонена{% else %}abgelehnt{% endif %}
+                {% if lang=='en' %}declined{% else %}abgelehnt{% endif %}
               </option>
               <option value="abgeschlossen" {% if row.status=='abgeschlossen' %}selected{% endif %}>
-                {% if lang=='ru' %}завершена{% else %}abgeschlossen{% endif %}
+                {% if lang=='en' %}completed{% else %}abgeschlossen{% endif %}
               </option>
             </select>
             <button type="submit" class="btn btn-sm">
-              {% if lang=='ru' %}ОК{% else %}OK{% endif %}
+              {% if lang=='en' %}OK{% else %}OK{% endif %}
             </button>
           </form>
           <small>{{ row.created_at }}</small>
@@ -73,18 +74,20 @@
     {% endfor %}
     </tbody>
   </table>
+  </div>
   {% else %}
-    <p>{% if lang=='ru' %}Бронирований пока нет.{% else %}Noch keine Reservierungen.{% endif %}</p>
+    <p>{% if lang=='en' %}No reservations yet.{% else %}Noch keine Reservierungen.{% endif %}</p>
   {% endif %}
 
-  <h2>✉ {% if lang=='ru' %}Сообщения{% else %}Nachrichten{% endif %} ({{ contacts|length }})</h2>
+  <h2>✉ {% if lang=='en' %}Messages{% else %}Nachrichten{% endif %} ({{ contacts|length }})</h2>
   {% if contacts %}
+  <div style="overflow-x:auto">
   <table class="rtable">
     <thead><tr>
-      <th>#</th><th>{% if lang=='ru' %}Имя{% else %}Name{% endif %}</th>
+      <th>#</th><th>{% if lang=='en' %}Name{% else %}Name{% endif %}</th>
       <th>E-Mail</th>
-      <th>{% if lang=='ru' %}Сообщение{% else %}Nachricht{% endif %}</th>
-      <th>{% if lang=='ru' %}Дата{% else %}Datum{% endif %}</th>
+      <th>{% if lang=='en' %}Message{% else %}Nachricht{% endif %}</th>
+      <th>{% if lang=='en' %}Date{% else %}Datum{% endif %}</th>
     </tr></thead>
     <tbody>
       {% for c in contacts %}
@@ -92,8 +95,9 @@
       {% endfor %}
     </tbody>
   </table>
+  </div>
   {% else %}
-    <p>{% if lang=='ru' %}Сообщений нет.{% else %}Keine Nachrichten.{% endif %}</p>
+    <p>{% if lang=='en' %}No messages.{% else %}Keine Nachrichten.{% endif %}</p>
   {% endif %}
 </section>
 {% endblock %}

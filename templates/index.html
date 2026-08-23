@@ -11,7 +11,7 @@
       <a href="{{ r.wolt_url }}" target="_blank" rel="noopener" class="btn btn-wolt-outline">{{ t('cta_wolt') }}</a>
     </div>
     <div class="hero-meta">
-      <div><span class="num">★ {{ r.rating }}</span><span>{{ t('meta_rating') }}</span></div>
+      <div><span class="num" data-google-rating>★ {{ r.rating }}</span><span>{{ t('meta_rating') }}</span></div>
       <div><span class="num">1.</span><span>{{ t('meta_first_georgian') }}</span></div>
       <div><span class="num">8000+</span><span>{{ t('meta_wine_tradition') }}</span></div>
     </div>
@@ -41,16 +41,16 @@
       <div class="dish-body">
         <h3>{{ t('dish_2_h') }}</h3>
         <p>{{ t('dish_2_p') }}</p>
-        <span class="price">{% if lang=='de' %}ab € 9,50{% else %}от € 9,50{% endif %}</span>
+        <span class="price">{% if lang=='en' %}from € 9.50{% else %}ab € 9,50{% endif %}</span>
       </div>
     </article>
     <article class="dish-card">
       <img src="https://sspark.genspark.ai/cfimages?u1=nGmEtPnVhjISZSFKq3KALjTXWDNgVdR%2BTi79fIXRgFEBePmTPVek9YWMYiNBsver485jVfgKwliYfaVIsBMXKznPJaZL&u2=5lyNrnPSmaJwj5uf&width=800"
-           alt="Qvevri Wein" loading="lazy">
+           alt="Qvevri Wine" loading="lazy">
       <div class="dish-body">
         <h3>{{ t('dish_3_h') }}</h3>
         <p>{{ t('dish_3_p') }}</p>
-        <span class="price">{% if lang=='de' %}ab € 6,90 / Glas{% else %}от € 6,90 / бокал{% endif %}</span>
+        <span class="price">{% if lang=='en' %}from € 6.90 / glass{% else %}ab € 6,90 / Glas{% endif %}</span>
       </div>
     </article>
     <article class="dish-card">
